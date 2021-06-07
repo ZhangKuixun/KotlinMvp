@@ -20,13 +20,13 @@ import kotlin.properties.Delegates
  *
  */
 
-class MyApplication : Application(){
+class MyApplication : Application() {
 
     private var refWatcher: RefWatcher? = null
 
     companion object {
 
-        private val TAG = "MyApplication"
+        private const val TAG = "MyApplication"
 
         var context: Context by Delegates.notNull()
             private set
