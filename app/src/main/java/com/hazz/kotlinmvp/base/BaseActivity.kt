@@ -20,7 +20,7 @@ import pub.devrel.easypermissions.EasyPermissions
  * created: 2017/10/25
  * desc:BaseActivity基类
  */
-abstract class BaseActivity : AppCompatActivity(),EasyPermissions.PermissionCallbacks {
+abstract class BaseActivity : AppCompatActivity(), EasyPermissions.PermissionCallbacks {
     /**
      * 多种状态的 View 的切换
      */

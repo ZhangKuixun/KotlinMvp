@@ -41,7 +41,7 @@ class MyApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         context = applicationContext
-//        refWatcher = setupLeakCanary()
+        refWatcher = setupLeakCanary()
         initConfig()
         DisplayManager.init(this)
         registerActivityLifecycleCallbacks(mActivityLifecycleCallbacks)
@@ -75,7 +75,7 @@ class MyApplication : Application() {
     }
 
 
-    private val mActivityLifecycleCallbacks = object : Application.ActivityLifecycleCallbacks {
+    private val mActivityLifecycleCallbacks = object : ActivityLifecycleCallbacks {
         override fun onActivityCreated(activity: Activity, savedInstanceState: Bundle?) {
             Log.d(TAG, "onCreated: " + activity.componentName.className)
         }

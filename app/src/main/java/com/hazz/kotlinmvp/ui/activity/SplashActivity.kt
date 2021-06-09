@@ -23,11 +23,11 @@ import pub.devrel.easypermissions.EasyPermissions
 class SplashActivity : BaseActivity() {
 
 
-    private var textTypeface: Typeface?=null
+    private var textTypeface: Typeface? = null
 
-    private var descTypeFace: Typeface?=null
+    private var descTypeFace: Typeface? = null
 
-    private var alphaAnimation:AlphaAnimation?=null
+    private var alphaAnimation: AlphaAnimation? = null
 
     init {
         textTypeface = Typeface.createFromAsset(MyApplication.context.assets, "fonts/Lobster-1.4.otf")
@@ -49,7 +49,7 @@ class SplashActivity : BaseActivity() {
         tv_version_name.text = "v${AppUtils.getVerName(MyApplication.context)}"
 
         //渐变展示启动屏
-        alphaAnimation= AlphaAnimation(0.3f, 1.0f)
+        alphaAnimation = AlphaAnimation(0.3f, 1.0f)
         alphaAnimation?.duration = 2000
         alphaAnimation?.setAnimationListener(object : AnimationListener {
             override fun onAnimationEnd(arg0: Animation) {
@@ -80,7 +80,7 @@ class SplashActivity : BaseActivity() {
      * 6.0以下版本(系统自动申请) 不会弹框
      * 有些厂商修改了6.0系统申请机制，他们修改成系统自动申请权限了
      */
-    private fun checkPermission(){
+    private fun checkPermission() {
         val perms = arrayOf(Manifest.permission.READ_PHONE_STATE, Manifest.permission.WRITE_EXTERNAL_STORAGE)
         EasyPermissions.requestPermissions(this, "KotlinMvp应用需要以下权限，请允许", 0, *perms)
 
