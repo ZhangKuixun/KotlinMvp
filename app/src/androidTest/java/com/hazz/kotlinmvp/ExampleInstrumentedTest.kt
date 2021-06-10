@@ -21,4 +21,18 @@ class ExampleInstrumentedTest {
         val appContext = InstrumentationRegistry.getTargetContext()
         assertEquals("com.hazz.kotlinmvp", appContext.packageName)
     }
+
+    @Test
+    fun filterTo_mapTo() {
+        val numbers = listOf("one", "two", "three", "four")
+        val filterResults = mutableListOf<String>() // ⽬标对象
+        numbers.filterTo(filterResults) { it.length > 3 }
+        numbers.filterIndexedTo(filterResults) { index, _ -> index == 0 }
+        println(filterResults) // 包含两个操作的结果 [three, four, one]
+
+        // 为了⽅便起⻅，这些函数将⽬标集合返回了，因此您可以在函数调⽤的相应参数中直接创建它：
+        // 将数字直接过滤到新的哈希集中，从⽽消除结果中的重复项
+        val result = numbers.mapTo(HashSet()) { it.length }// [4, 5, 3]
+        println("distinct item lengths are $result")
+    }
 }

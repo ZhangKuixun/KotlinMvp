@@ -70,7 +70,7 @@ class MainActivity : BaseActivity() {
 
     //初始化底部菜单
     private fun initTab() {
-        (0 until mTitles.size).mapTo(mTabEntities) {
+        (mTitles.indices).mapTo(mTabEntities) {
             TabEntity(mTitles[it], mIconSelectIds[it], mIconUnSelectIds[it])
         }
         //为Tab赋值
@@ -140,7 +140,7 @@ class MainActivity : BaseActivity() {
      * @param transaction transaction
      */
     private fun hideFragments(transaction: FragmentTransaction) {
-        mHomeFragment?.let { transaction.hide(it) }
+        mHomeFragment?.let { transaction.hide(it) }// 表示mHomeFragment不为null的条件下，才会去执行let函数体
         mDiscoveryFragment?.let { transaction.hide(it) }
         mHotFragment?.let { transaction.hide(it) }
         mMineFragment?.let { transaction.hide(it) }
