@@ -35,4 +35,20 @@ class ExampleInstrumentedTest {
         val result = numbers.mapTo(HashSet()) { it.length }// [4, 5, 3]
         println("distinct item lengths are $result")
     }
+
+    @Test
+    fun minus_Plus() {
+        data class Salary(var base: Int = 100) {
+            override fun toString(): String = base.toString()
+        }
+
+        operator fun Salary.plus(other: Salary): Salary = Salary(base + other.base)
+        operator fun Salary.minus(other: Salary): Salary = Salary(base - other.base)
+
+        val s1 = Salary(10)
+        val s2 = Salary(20)
+
+        println(s1 + s2) // 30
+        println(s1 - s2) // -10
+    }
 }

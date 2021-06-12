@@ -14,7 +14,7 @@ import java.net.URL
 /**
  * Created by xuhao on 2017/11/13.
  */
-class NetworkUtil{
+class NetworkUtil {
 
     companion object {
 
@@ -22,7 +22,8 @@ class NetworkUtil{
         var NET_CNNT_BAIDU_TIMEOUT = 2 // no NetworkAvailable
         var NET_NOT_PREPARE = 3 // Net no ready
         var NET_ERROR = 4 //net error
-        private val TIMEOUT = 3000 // TIMEOUT
+        private const val TIMEOUT = 3000 // TIMEOUT
+
         /**
          * check NetworkAvailable
          *
@@ -147,7 +148,6 @@ class NetworkUtil{
         }
 
     }
-
 
 
 }

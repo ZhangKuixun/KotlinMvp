@@ -14,13 +14,13 @@ import retrofit2.http.Url
  * Api 接口
  */
 
-interface ApiService{
+interface ApiService {
 
     /**
      * 首页精选
      */
     @GET("v2/feed?")
-    fun getFirstHomeData(@Query("num") num:Int): Observable<HomeBean>
+    fun getFirstHomeData(@Query("num") num: Int): Observable<HomeBean>
 
     /**
      * 根据 nextPageUrl 请求数据下一页数据
@@ -56,32 +56,31 @@ interface ApiService{
      * 获取全部排行榜的Info（包括，title 和 Url）
      */
     @GET("v4/rankList")
-    fun getRankList():Observable<TabInfoBean>
+    fun getRankList(): Observable<TabInfoBean>
 
     /**
      * 获取搜索信息
      */
     @GET("v1/search?&num=10&start=10")
-    fun getSearchData(@Query("query") query :String) : Observable<HomeBean.Issue>
+    fun getSearchData(@Query("query") query: String): Observable<HomeBean.Issue>
 
     /**
      * 热门搜索词
      */
     @GET("v3/queries/hot")
-    fun getHotWord():Observable<ArrayList<String>>
+    fun getHotWord(): Observable<ArrayList<String>>
 
     /**
      * 关注
      */
     @GET("v4/tabs/follow")
-    fun getFollowInfo():Observable<HomeBean.Issue>
+    fun getFollowInfo(): Observable<HomeBean.Issue>
 
     /**
      * 作者信息
      */
     @GET("v4/pgcs/detail/tab?")
-    fun getAuthorInfo(@Query("id") id: Long):Observable<AuthorInfoBean>
-
+    fun getAuthorInfo(@Query("id") id: Long): Observable<AuthorInfoBean>
 
 
 }

@@ -10,12 +10,12 @@ import io.reactivex.Observable
  * desc: 首页精选 model
  */
 
-class HomeModel{
+class HomeModel {
 
     /**
      * 获取首页 Banner 数据
      */
-    fun requestHomeData(num:Int):Observable<HomeBean>{
+    fun requestHomeData(num: Int): Observable<HomeBean> {
         return RetrofitManager.service.getFirstHomeData(num)
                 .compose(SchedulerUtils.ioToMain())
     }
@@ -23,12 +23,11 @@ class HomeModel{
     /**
      * 加载更多
      */
-    fun loadMoreData(url:String):Observable<HomeBean>{
+    fun loadMoreData(url: String): Observable<HomeBean> {
 
         return RetrofitManager.service.getMoreHomeData(url)
                 .compose(SchedulerUtils.ioToMain())
     }
-
 
 
 }

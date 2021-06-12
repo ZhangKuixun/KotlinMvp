@@ -17,7 +17,7 @@ import android.widget.TextView
 class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
     //用于缓存已找的界面
-    private var mView: SparseArray<View>?=null
+    private var mView: SparseArray<View>? = null
 
     init {
         mView = SparseArray()

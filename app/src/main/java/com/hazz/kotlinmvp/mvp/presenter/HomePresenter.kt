@@ -17,10 +17,9 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
 
     private var bannerHomeBean: HomeBean? = null
 
-    private var nextPageUrl:String?=null     //加载首页的Banner 数据+一页数据合并后，nextPageUrl没 add
+    private var nextPageUrl: String? = null     //加载首页的Banner 数据+一页数据合并后，nextPageUrl没 add
 
     private val homeModel: HomeModel by lazy {
-
         HomeModel()
     }
 
@@ -32,14 +31,14 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
         checkViewAttached()
         mRootView?.showLoading()
         val disposable = homeModel.requestHomeData(num)
-                .flatMap { homeBean ->
+                .flatMap { homeBean ->// TODO 简写没懂
 
                     //过滤掉 Banner2(包含广告,等不需要的 Type), 具体查看接口分析
                     val bannerItemList = homeBean.issueList[0].itemList
 
                     bannerItemList.filter { item ->
-                        item.type=="banner2"|| item.type=="horizontalScrollCard"
-                    }.forEach{ item ->
+                        item.type == "banner2" || item.type == "horizontalScrollCard"
+                    }.forEach { item ->
                         //移除 item
                         bannerItemList.remove(item)
                     }
@@ -51,7 +50,7 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
                     homeModel.loadMoreData(homeBean.nextPageUrl)
                 }
 
-                .subscribe({ homeBean->
+                .subscribe({ homeBean ->
                     mRootView?.apply {
                         dismissLoading()
 
@@ -60,8 +59,8 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
                         val newBannerItemList = homeBean.issueList[0].itemList
 
                         newBannerItemList.filter { item ->
-                            item.type=="banner2"||item.type=="horizontalScrollCard"
-                        }.forEach{ item ->
+                            item.type == "banner2" || item.type == "horizontalScrollCard"
+                        }.forEach { item ->
                             //移除 item
                             newBannerItemList.remove(item)
                         }
@@ -78,7 +77,7 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
                 }, { t ->
                     mRootView?.apply {
                         dismissLoading()
-                        showError(ExceptionHandle.handleException(t),ExceptionHandle.errorCode)
+                        showError(ExceptionHandle.handleException(t), ExceptionHandle.errorCode)
                     }
                 })
 
@@ -91,37 +90,34 @@ class HomePresenter : BasePresenter<HomeContract.View>(), HomeContract.Presenter
      */
 
     override fun loadMoreData() {
-         val disposable = nextPageUrl?.let {
-             homeModel.loadMoreData(it)
-                     .subscribe({ homeBean->
-                         mRootView?.apply {
-                             //过滤掉 Banner2(包含广告,等不需要的 Type), 具体查看接口分析
-                             val newItemList = homeBean.issueList[0].itemList
+        val disposable = nextPageUrl?.let {
+            homeModel.loadMoreData(it)
+                    .subscribe({ homeBean ->
+                        mRootView?.apply {
+                            //过滤掉 Banner2(包含广告,等不需要的 Type), 具体查看接口分析
+                            val newItemList = homeBean.issueList[0].itemList
 
-                             newItemList.filter { item ->
-                                 item.type=="banner2"||item.type=="horizontalScrollCard"
-                             }.forEach{ item ->
-                                 //移除 item
-                                 newItemList.remove(item)
-                             }
+                            newItemList.filter { item ->
+                                item.type == "banner2" || item.type == "horizontalScrollCard"
+                            }.forEach { item ->
+                                //移除 item
+                                newItemList.remove(item)
+                            }
 
-                             nextPageUrl = homeBean.nextPageUrl
-                             setMoreData(newItemList)
-                         }
+                            nextPageUrl = homeBean.nextPageUrl
+                            setMoreData(newItemList)
+                        }
 
-                     },{ t ->
-                         mRootView?.apply {
-                             showError(ExceptionHandle.handleException(t),ExceptionHandle.errorCode)
-                         }
-                     })
-
-
-         }
+                    }, { t ->
+                        mRootView?.apply {
+                            showError(ExceptionHandle.handleException(t), ExceptionHandle.errorCode)
+                        }
+                    })
+        }
         if (disposable != null) {
             addSubscription(disposable)
         }
     }
-
 
 
 }

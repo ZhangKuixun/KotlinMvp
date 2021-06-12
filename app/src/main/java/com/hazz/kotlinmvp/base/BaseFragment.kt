@@ -20,25 +20,26 @@ import pub.devrel.easypermissions.EasyPermissions
  * desc:
  */
 
- abstract class BaseFragment: Fragment(),EasyPermissions.PermissionCallbacks{
+abstract class BaseFragment : Fragment(), EasyPermissions.PermissionCallbacks {
 
     /**
      * 视图是否加载完毕
      */
     private var isViewPrepare = false
+
     /**
      * 数据是否加载过了
      */
     private var hasLoadData = false
+
     /**
      * 多种状态的 View 的切换
      */
     protected var mLayoutStatusView: MultipleStatusView? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(getLayoutId(),null)
+        return inflater.inflate(getLayoutId(), null)
     }
-
 
 
     override fun setUserVisibleHint(isVisibleToUser: Boolean) {
@@ -73,7 +74,7 @@ import pub.devrel.easypermissions.EasyPermissions
      * 加载布局
      */
     @LayoutRes
-    abstract fun getLayoutId():Int
+    abstract fun getLayoutId(): Int
 
     /**
      * 初始化 ViewI

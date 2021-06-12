@@ -19,6 +19,7 @@ import com.hazz.kotlinmvp.ui.activity.VideoDetailActivity
 import com.hazz.kotlinmvp.view.recyclerview.ViewHolder
 import com.hazz.kotlinmvp.view.recyclerview.adapter.CommonAdapter
 import io.reactivex.Observable
+import kotlinx.android.synthetic.main.item_home_banner.view.*
 
 /**
  * Created by xuhao on 2017/11/23.
@@ -110,12 +111,10 @@ class HomeAdapter(context: Context, data: ArrayList<HomeBean.Issue.Item>)
                                     .transition(DrawableTransitionOptions().crossFade())
                                     .placeholder(R.drawable.placeholder_banner)
                                     .into(banner.getItemImageView(position))
-
-
                         }
-
                     }
                 }
+
                 //没有使用到的参数在 kotlin 中用"_"代替
                 holder.getView<BGABanner>(R.id.banner).setDelegate { _, imageView, _, i ->
 
@@ -234,8 +233,7 @@ class HomeAdapter(context: Context, data: ArrayList<HomeBean.Issue.Item>)
         intent.putExtra(VideoDetailActivity.TRANSITION, true)
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             val pair = Pair(view, VideoDetailActivity.IMG_TRANSITION)
-            val activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    activity, pair)
+            val activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, pair)
             ActivityCompat.startActivity(activity, intent, activityOptions.toBundle())
         } else {
             activity.startActivity(intent)

@@ -46,7 +46,8 @@ abstract class CommonAdapter<T>(var mContext: Context, var mData: ArrayList<T>, 
 
     override fun getItemViewType(position: Int): Int {
         //多布局问题
-        return mTypeSupport?.getLayoutId(mData[position], position) ?: super.getItemViewType(position)
+        return mTypeSupport?.getLayoutId(mData[position], position)
+                ?: super.getItemViewType(position)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
