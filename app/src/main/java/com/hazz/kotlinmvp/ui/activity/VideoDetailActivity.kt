@@ -164,7 +164,7 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View {
             }
         })
         //设置返回按键功能
-        mVideoView.backButton.setOnClickListener({ onBackPressed() })
+        mVideoView.backButton.setOnClickListener { onBackPressed() }
         //设置全屏按键功能
         mVideoView.fullscreenButton.setOnClickListener {
             //直接横屏
@@ -173,13 +173,10 @@ class VideoDetailActivity : BaseActivity(), VideoDetailContract.View {
             mVideoView.startWindowFullscreen(this, true, true)
         }
         //锁屏事件
-        mVideoView.setLockClickListener(object : LockClickListener {
-            override fun onClick(view: View?, lock: Boolean) {
-                //配合下方的onConfigurationChanged
-                orientationUtils?.isEnable = !lock
-            }
-
-        })
+        mVideoView.setLockClickListener { _, lock ->
+            //配合下方的onConfigurationChanged
+            orientationUtils?.isEnable = !lock
+        }
     }
 
 

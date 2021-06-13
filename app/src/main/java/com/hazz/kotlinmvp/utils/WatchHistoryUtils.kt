@@ -268,16 +268,14 @@ class WatchHistoryUtils {
         }
 
 
-        fun putObject(fileName: String,context: Context, `object`: Any?,
-                      key: String): Boolean {
-            val sp = context.getSharedPreferences(fileName,
-                    Context.MODE_PRIVATE)
+        fun putObject(fileName: String, context: Context, `object`: Any?, key: String): Boolean {
+            val sp = context.getSharedPreferences(fileName, Context.MODE_PRIVATE)
             if (`object` == null) {
                 val editor = sp.edit().remove(key)
                 return editor.commit()
             }
             val baos = ByteArrayOutputStream()
-            var oos: ObjectOutputStream?
+            val oos: ObjectOutputStream?
             try {
                 oos = ObjectOutputStream(baos)
                 oos.writeObject(`object`)
@@ -288,8 +286,7 @@ class WatchHistoryUtils {
 
             // 将对象放到OutputStream中
             // 将对象转换成byte数组，并将其进行base64编码
-            val objectStr = String(Base64.encode(baos.toByteArray(),
-                    Base64.DEFAULT))
+            val objectStr = String(Base64.encode(baos.toByteArray(), Base64.DEFAULT))
             try {
                 baos.close()
                 oos.close()
@@ -309,7 +306,7 @@ class WatchHistoryUtils {
          * @param key
          * @return
          */
-        fun getObject(fileName: String,context: Context, key: String): Any? {
+        fun getObject(fileName: String, context: Context, key: String): Any? {
             val sharePre = context.getSharedPreferences(fileName,
                     Context.MODE_PRIVATE)
             try {
