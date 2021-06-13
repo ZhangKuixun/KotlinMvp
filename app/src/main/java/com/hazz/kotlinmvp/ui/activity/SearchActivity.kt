@@ -119,6 +119,7 @@ class SearchActivity : BaseActivity(), SearchContract.View {
         StatusBarUtil.setPaddingSmart(this, toolbar)
 
     }
+
     /**
      * 关闭软件盘
      */
@@ -200,7 +201,7 @@ class SearchActivity : BaseActivity(), SearchContract.View {
     /**
      * 隐藏热门关键字的 View
      */
-    private fun hideHotWordView(){
+    private fun hideHotWordView() {
         layout_hot_words.visibility = View.GONE
         layout_content_result.visibility = View.VISIBLE
     }
@@ -208,7 +209,7 @@ class SearchActivity : BaseActivity(), SearchContract.View {
     /**
      * 显示热门关键字的 流式布局
      */
-    private fun showHotWordView(){
+    private fun showHotWordView() {
         layout_hot_words.visibility = View.VISIBLE
         layout_content_result.visibility = View.GONE
     }

@@ -11,6 +11,7 @@ import android.support.v4.content.ContextCompat
 import android.view.View
 import android.view.ViewAnimationUtils
 import android.view.animation.AccelerateDecelerateInterpolator
+import kotlin.math.hypot
 
 /**
  * Created by xuhao on 2017/12/1.
@@ -26,7 +27,6 @@ object ViewAnimUtils {
     }
 
 
-
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     fun animateRevealShow(
             context: Context, view: View,
@@ -35,7 +35,7 @@ object ViewAnimUtils {
         val cx = (view.left + view.right) / 2
         val cy = (view.top + view.bottom) / 2
 
-        val finalRadius = Math.hypot(view.width.toDouble(), view.height.toDouble()).toFloat()
+        val finalRadius = hypot(view.width.toDouble(), view.height.toDouble()).toFloat()
 
         // 设置圆形显示动画
         val anim = ViewAnimationUtils.createCircularReveal(view, cx, cy, startRadius.toFloat(), finalRadius)
