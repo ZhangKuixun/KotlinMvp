@@ -62,7 +62,7 @@ class HotFragment : BaseFragment(), HotTabContract.View {
 
 
     override fun showLoading() {
-      multipleStatusView.showLoading()
+        multipleStatusView.showLoading()
     }
 
     override fun dismissLoading() {
@@ -78,12 +78,12 @@ class HotFragment : BaseFragment(), HotTabContract.View {
         tabInfoBean.tabInfo.tabList.mapTo(mTabTitleList) { it.name }
         tabInfoBean.tabInfo.tabList.mapTo(mFragmentList) { RankFragment.getInstance(it.apiUrl) }
 
-        mViewPager.adapter = BaseFragmentAdapter(childFragmentManager,mFragmentList,mTabTitleList)
+        mViewPager.adapter = BaseFragmentAdapter(childFragmentManager, mFragmentList, mTabTitleList)
         mTabLayout.setupWithViewPager(mViewPager)
 
     }
 
-    override fun showError(errorMsg: String,errorCode:Int) {
+    override fun showError(errorMsg: String, errorCode: Int) {
         showToast(errorMsg)
         if (errorCode == ErrorStatus.NETWORK_ERROR) {
             multipleStatusView.showNoNetwork()

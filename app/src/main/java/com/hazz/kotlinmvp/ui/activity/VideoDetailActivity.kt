@@ -7,7 +7,6 @@ import android.os.Build
 import android.support.v4.view.ViewCompat
 import android.support.v7.widget.LinearLayoutManager
 import android.transition.Transition
-import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.load.DecodeFormat
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
@@ -27,7 +26,6 @@ import com.hazz.kotlinmvp.utils.WatchHistoryUtils
 import com.hazz.kotlinmvp.view.VideoListener
 import com.orhanobut.logger.Logger
 import com.scwang.smartrefresh.header.MaterialHeader
-import com.shuyu.gsyvideoplayer.listener.LockClickListener
 import com.shuyu.gsyvideoplayer.utils.OrientationUtils
 import com.shuyu.gsyvideoplayer.video.StandardGSYVideoPlayer
 import com.shuyu.gsyvideoplayer.video.base.GSYVideoPlayer

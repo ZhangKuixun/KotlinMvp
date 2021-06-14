@@ -17,7 +17,5 @@
         android:layout_height="match_parent"
         android:clipToPadding="false"
         android:paddingBottom="@dimen/padding_tab_layout_bottom"
-        tools:listitem="@layout/item_category_detail">
-
-    </android.support.v7.widget.RecyclerView>
+        tools:listitem="@layout/item_category_detail" />
 </com.classic.common.MultipleStatusView>

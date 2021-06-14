@@ -9,6 +9,4 @@
     android:gravity="center"
     android:padding="5dp"
     android:textColor="@color/color_white"
-    tools:text="我的">
-
-</TextView>
+    tools:text="我的"/>

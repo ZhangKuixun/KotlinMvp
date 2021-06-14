@@ -41,14 +41,14 @@ class CategoryDetailAdapter(context: Context, dataList: ArrayList<HomeBean.Issue
      */
     private fun setVideoItem(holder: ViewHolder, item: HomeBean.Issue.Item) {
         val itemData = item.data
-        val cover = itemData?.cover?.feed?:""
+        val cover = itemData?.cover?.feed ?: ""
         // 加载封页图
         GlideApp.with(mContext)
                 .load(cover)
                 .apply(RequestOptions().placeholder(R.drawable.placeholder_banner))
                 .transition(DrawableTransitionOptions().crossFade())
                 .into(holder.getView(R.id.iv_image))
-        holder.setText(R.id.tv_title, itemData?.title?:"")
+        holder.setText(R.id.tv_title, itemData?.title ?: "")
 
         // 格式化时间
         val timeFormat = durationFormat(itemData?.duration)
@@ -71,11 +71,10 @@ class CategoryDetailAdapter(context: Context, dataList: ArrayList<HomeBean.Issue
     private fun goToVideoPlayer(activity: Activity, view: View, itemData: HomeBean.Issue.Item) {
         val intent = Intent(activity, VideoDetailActivity::class.java)
         intent.putExtra(Constants.BUNDLE_VIDEO_DATA, itemData)
-        intent.putExtra(VideoDetailActivity.Companion.TRANSITION, true)
+        intent.putExtra(VideoDetailActivity.TRANSITION, true)
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            val pair = Pair<View, String>(view, VideoDetailActivity.IMG_TRANSITION)
-            val activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    activity, pair)
+            val pair = Pair(view, VideoDetailActivity.IMG_TRANSITION)
+            val activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, pair)
             ActivityCompat.startActivity(activity, intent, activityOptions.toBundle())
         } else {
             activity.startActivity(intent)

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/backgroundColor">
 
     <ImageView
@@ -44,14 +44,14 @@
             android:id="@+id/relayout_gitHub"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingEnd="@dimen/padding_common_h"
-            android:paddingStart="@dimen/padding_common_h">
+            android:paddingStart="@dimen/padding_common_h"
+            android:paddingEnd="@dimen/padding_common_h">
 
             <TextView
                 style="@style/AppTheme.Label"
                 android:layout_centerVertical="true"
-                android:paddingBottom="@dimen/padding_common"
                 android:paddingTop="@dimen/padding_common"
+                android:paddingBottom="@dimen/padding_common"
                 android:text="@string/gitHub"
                 android:textColor="@color/color_black" />
 
@@ -72,14 +72,14 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingEnd="@dimen/padding_common_h"
-            android:paddingStart="@dimen/padding_common_h">
+            android:paddingStart="@dimen/padding_common_h"
+            android:paddingEnd="@dimen/padding_common_h">
 
             <TextView
                 style="@style/AppTheme.Label"
                 android:layout_centerVertical="true"
-                android:paddingBottom="@dimen/padding_common"
                 android:paddingTop="@dimen/padding_common"
+                android:paddingBottom="@dimen/padding_common"
                 android:text="@string/feedback"
                 android:textColor="@color/color_black" />
 
@@ -110,8 +110,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
         android:layout_marginTop="@dimen/padding_common_d"
+        android:layout_marginBottom="50dp"
         android:gravity="center"
         android:text="@string/not_use_commercial"
         android:textColor="@color/color_gray"
@@ -132,24 +132,23 @@
         android:textSize="@dimen/textSize_small_10" />
 
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/color_title_bg"
+        app:navigationIcon="?attr/homeAsUpIndicator">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="?attr/homeAsUpIndicator"
-            android:background="@color/color_title_bg">
-
-                <TextView
-                    android:id="@+id/tv_header_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerInParent="true"
-                    android:layout_gravity="center"
-                    android:text="@string/about"
-                    android:textColor="@color/color_item_title"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
-        </android.support.v7.widget.Toolbar>
+        <TextView
+            android:id="@+id/tv_header_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_gravity="center"
+            android:text="@string/about"
+            android:textColor="@color/color_item_title"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </android.support.v7.widget.Toolbar>
 
 </RelativeLayout>

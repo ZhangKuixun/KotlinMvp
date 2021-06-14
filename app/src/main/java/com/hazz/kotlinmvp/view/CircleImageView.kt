@@ -47,7 +47,7 @@ class CircleImageView(context: Context, attrs: AttributeSet) : android.support.v
         if (rawBitmap != null && mType != TYPE_NONE) {
             val viewWidth = width
             val viewHeight = height
-            val viewMinSize = Math.min(viewWidth, viewHeight)
+            val viewMinSize = viewWidth.coerceAtMost(viewHeight)
             val dstWidth = (if (mType == TYPE_CIRCLE) viewMinSize else viewWidth).toFloat()
             val dstHeight = (if (mType == TYPE_CIRCLE) viewMinSize else viewHeight).toFloat()
             val halfBorderWidth = mBorderWidth / 2.0f
@@ -92,19 +92,23 @@ class CircleImageView(context: Context, attrs: AttributeSet) : android.support.v
     }
 
     private fun getBitmap(drawable: Drawable): Bitmap? {
-        if (drawable is BitmapDrawable) {
-            return drawable.bitmap
-        } else if (drawable is ColorDrawable) {
-            val rect = drawable.getBounds()
-            val width = rect.right - rect.left
-            val height = rect.bottom - rect.top
-            val color = drawable.color
-            val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
-            val canvas = Canvas(bitmap)
-            canvas.drawARGB(Color.alpha(color), Color.red(color), Color.green(color), Color.blue(color))
-            return bitmap
-        } else {
-            return null
+        return when (drawable) {
+            is BitmapDrawable -> {
+                drawable.bitmap
+            }
+            is ColorDrawable -> {
+                val rect = drawable.getBounds()
+                val width = rect.right - rect.left
+                val height = rect.bottom - rect.top
+                val color = drawable.color
+                val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+                val canvas = Canvas(bitmap)
+                canvas.drawARGB(Color.alpha(color), Color.red(color), Color.green(color), Color.blue(color))
+                bitmap
+            }
+            else -> {
+                null
+            }
         }
     }
 
@@ -112,19 +116,21 @@ class CircleImageView(context: Context, attrs: AttributeSet) : android.support.v
         /**
          * android.widget.ImageView
          */
-        val TYPE_NONE = 0
+        const val TYPE_NONE = 0
+
         /**
          * 圆形
          */
-        val TYPE_CIRCLE = 1
+        const val TYPE_CIRCLE = 1
+
         /**
          * 圆角矩形
          */
-        val TYPE_ROUNDED_RECT = 2
+        const val TYPE_ROUNDED_RECT = 2
 
-        private val DEFAULT_TYPE = TYPE_NONE
-        private val DEFAULT_BORDER_COLOR = Color.TRANSPARENT
-        private val DEFAULT_BORDER_WIDTH = 0
-        private val DEFAULT_RECT_ROUND_RADIUS = 0
+        private const val DEFAULT_TYPE = TYPE_NONE
+        private const val DEFAULT_BORDER_COLOR = Color.TRANSPARENT
+        private const val DEFAULT_BORDER_WIDTH = 0
+        private const val DEFAULT_RECT_ROUND_RADIUS = 0
     }
 }

@@ -40,7 +40,6 @@ class FollowHorizontalAdapter(mContext: Context, categoryList: ArrayList<HomeBea
                         .transition(DrawableTransitionOptions().crossFade())
                         .into(holder.getView(R.id.iv_cover_feed))
             }
-
         })
 
         //横向 RecyclerView 封页图下面标题
@@ -54,16 +53,14 @@ class FollowHorizontalAdapter(mContext: Context, categoryList: ArrayList<HomeBea
 
             if (horizontalItemData?.tags != null && horizontalItemData.tags.size > 0) {
                 setText(R.id.tv_tag, "#${horizontalItemData.tags[0].name} / $timeFormat")
-            }else{
-                setText(R.id.tv_tag,"#$timeFormat")
+            } else {
+                setText(R.id.tv_tag, "#$timeFormat")
             }
 
             setOnItemClickListener(listener = View.OnClickListener {
                 goToVideoPlayer(mContext as Activity, holder.getView(R.id.iv_cover_feed), data)
             })
         }
-
-
     }
 
     /**
@@ -75,11 +72,10 @@ class FollowHorizontalAdapter(mContext: Context, categoryList: ArrayList<HomeBea
     private fun goToVideoPlayer(activity: Activity, view: View, itemData: HomeBean.Issue.Item) {
         val intent = Intent(activity, VideoDetailActivity::class.java)
         intent.putExtra(Constants.BUNDLE_VIDEO_DATA, itemData)
-        intent.putExtra(VideoDetailActivity.Companion.TRANSITION, true)
+        intent.putExtra(VideoDetailActivity.TRANSITION, true)
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            val pair = Pair<View, String>(view, VideoDetailActivity.IMG_TRANSITION)
-            val activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(
-                    activity, pair)
+            val pair = Pair(view, VideoDetailActivity.IMG_TRANSITION)
+            val activityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(activity, pair)
             ActivityCompat.startActivity(activity, intent, activityOptions.toBundle())
         } else {
             activity.startActivity(intent)

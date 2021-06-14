@@ -20,15 +20,13 @@ import kotlinx.android.synthetic.main.layout_recyclerview.*
 class FollowFragment : BaseFragment(), FollowContract.View {
 
 
-
-
     private var mTitle: String? = null
 
     private var itemList = ArrayList<HomeBean.Issue.Item>()
 
     private val mPresenter by lazy { FollowPresenter() }
 
-    private val mFollowAdapter by lazy { activity?.let { FollowAdapter(it,itemList) } }
+    private val mFollowAdapter by lazy { activity?.let { FollowAdapter(it, itemList) } }
 
 
     /**

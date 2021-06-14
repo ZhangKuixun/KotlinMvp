@@ -30,9 +30,8 @@ class CategoryPresenter : BasePresenter<CategoryContract.View>(), CategoryContra
                 }, { t ->
                     mRootView?.apply {
                         //处理异常
-                        showError(ExceptionHandle.handleException(t),ExceptionHandle.errorCode)
+                        showError(ExceptionHandle.handleException(t), ExceptionHandle.errorCode)
                     }
-
                 })
 
         addSubscription(disposable)

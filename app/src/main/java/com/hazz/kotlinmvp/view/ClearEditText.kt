@@ -1,5 +1,6 @@
 package com.hazz.kotlinmvp.view
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.Drawable
 import android.text.Editable
@@ -9,12 +10,15 @@ import android.view.MotionEvent
 import android.view.View
 import android.widget.EditText
 import com.hazz.kotlinmvp.R
+import kotlin.jvm.internal.Intrinsics
+
 
 /**
  * Created by xuhao on 2017/12/4.
  * desc:带删除按钮的EditText
  */
 
+@SuppressLint("AppCompatCustomView")
 class ClearEditText @JvmOverloads constructor(context: Context, attrs: AttributeSet? = null,
                                               defStyle: Int = android.R.attr.editTextStyle) : EditText(context, attrs, defStyle), View.OnFocusChangeListener, TextWatcher {
     //EditText右侧的删除按钮

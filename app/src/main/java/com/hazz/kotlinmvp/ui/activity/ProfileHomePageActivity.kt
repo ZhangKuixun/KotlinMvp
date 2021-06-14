@@ -42,13 +42,13 @@ class ProfileHomePageActivity : BaseActivity() {
             override fun onHeaderPulling(header: RefreshHeader?, percent: Float, offset: Int, bottomHeight: Int, extendHeight: Int) {
                 mOffset = offset / 2
                 parallax.translationY = (mOffset - mScrollY).toFloat()
-                toolbar.alpha = 1 - Math.min(percent, 1f)
+                toolbar.alpha = 1 - percent.coerceAtMost(1f)
             }
 
             override fun onHeaderReleasing(header: RefreshHeader?, percent: Float, offset: Int, bottomHeight: Int, extendHeight: Int) {
                 mOffset = offset / 2
                 parallax.translationY = (mOffset - mScrollY).toFloat()
-                toolbar.alpha = 1 - Math.min(percent, 1f)
+                toolbar.alpha = 1 - percent.coerceAtMost(1f)
             }
         })
         scrollView.setOnScrollChangeListener(object : NestedScrollView.OnScrollChangeListener {
@@ -58,7 +58,7 @@ class ProfileHomePageActivity : BaseActivity() {
             override fun onScrollChange(v: NestedScrollView, scrollX: Int, scrollY: Int, oldScrollX: Int, oldScrollY: Int) {
                 var tScrollY= scrollY
                 if (lastScrollY < h) {
-                    tScrollY = Math.min(h, tScrollY)
+                    tScrollY = h.coerceAtMost(tScrollY)
                     mScrollY = if (tScrollY > h) h else tScrollY
                     buttonBarLayout.alpha = 1f * mScrollY / h
                     toolbar.setBackgroundColor(255 * mScrollY / h shl 24 or color)
@@ -73,7 +73,7 @@ class ProfileHomePageActivity : BaseActivity() {
         toolbar.setNavigationOnClickListener { finish() }
 
 
-        refreshLayout.setOnRefreshListener {  mWebView.loadUrl("https://xuhaoblog.com/KotlinMvp") }
+        refreshLayout.setOnRefreshListener {  mWebView.loadUrl("https://www.kotlincn.net/docs/reference/basic-types.html") }
         refreshLayout.autoRefresh()
 
         mWebView.settings.javaScriptEnabled = true

@@ -79,7 +79,6 @@ class WatchHistoryActivity : BaseActivity() {
             WatchHistoryUtils.getObject(Constants.FILE_WATCH_HISTORY_NAME, MyApplication.context,
                     keys[keyLength - it] as String) as HomeBean.Issue.Item
         }
-        
         return watchList
     }
 

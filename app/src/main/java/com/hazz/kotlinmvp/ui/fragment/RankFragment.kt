@@ -48,7 +48,7 @@ class RankFragment : BaseFragment(), RankContract.View {
         mRecyclerView.layoutManager = LinearLayoutManager(activity)
         mRecyclerView.adapter = mAdapter
 
-        mLayoutStatusView =multipleStatusView
+        mLayoutStatusView = multipleStatusView
 
     }
 
@@ -72,7 +72,7 @@ class RankFragment : BaseFragment(), RankContract.View {
         mAdapter?.addData(itemList)
     }
 
-    override fun showError(errorMsg: String,errorCode:Int) {
+    override fun showError(errorMsg: String, errorCode: Int) {
         showToast(errorMsg)
         if (errorCode == ErrorStatus.NETWORK_ERROR) {
             multipleStatusView.showNoNetwork()

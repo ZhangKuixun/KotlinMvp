@@ -262,8 +262,7 @@ class WatchHistoryUtils {
          * @return
          */
         fun getAll(fileName: String, context: Context): Map<String, *> {
-            val sp = context.getSharedPreferences(fileName,
-                    Context.MODE_PRIVATE)
+            val sp = context.getSharedPreferences(fileName, Context.MODE_PRIVATE)
             return sp.all
         }
 

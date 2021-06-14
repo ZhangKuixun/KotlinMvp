@@ -43,7 +43,7 @@ class WatchHistoryAdapter(context: Context, dataList: ArrayList<HomeBean.Issue.I
                 }
             })
         }
-        holder.getView<TextView>(R.id.tv_title).setTextColor(ContextCompat.getColor(mContext,R.color.color_black))
+        holder.getView<TextView>(R.id.tv_title).setTextColor(ContextCompat.getColor(mContext, R.color.color_black))
         holder.setOnItemClickListener(listener = View.OnClickListener {
             goToVideoPlayer(mContext as Activity, holder.getView(R.id.iv_video_small_card), data)
         })

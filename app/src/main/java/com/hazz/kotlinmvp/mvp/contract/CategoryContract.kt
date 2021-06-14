@@ -19,10 +19,10 @@ interface CategoryContract {
         /**
          * 显示错误信息
          */
-        fun showError(errorMsg:String,errorCode:Int)
+        fun showError(errorMsg: String, errorCode: Int)
     }
 
-    interface Presenter:IPresenter<View>{
+    interface Presenter : IPresenter<View> {
         /**
          * 获取分类的信息
          */

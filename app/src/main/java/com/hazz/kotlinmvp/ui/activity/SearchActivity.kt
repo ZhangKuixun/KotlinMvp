@@ -96,21 +96,18 @@ class SearchActivity : BaseActivity(), SearchContract.View {
         //取消
         tv_cancel.setOnClickListener { onBackPressed() }
         //键盘的搜索按钮
-        et_search_view.setOnEditorActionListener(object : TextView.OnEditorActionListener {
-            override fun onEditorAction(v: TextView?, actionId: Int, event: KeyEvent?): Boolean {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    closeSoftKeyboard()
-                    keyWords = et_search_view.text.toString().trim()
-                    if (keyWords.isNullOrEmpty()) {
-                        showToast("请输入你感兴趣的关键词")
-                    } else {
-                        mPresenter.querySearchData(keyWords!!)
-                    }
+        et_search_view.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                closeSoftKeyboard()
+                keyWords = et_search_view.text.toString().trim()
+                if (keyWords.isNullOrEmpty()) {
+                    showToast("请输入你感兴趣的关键词")
+                } else {
+                    mPresenter.querySearchData(keyWords!!)
                 }
-                return false
             }
-
-        })
+            false
+        }
 
         mLayoutStatusView = multipleStatusView
 

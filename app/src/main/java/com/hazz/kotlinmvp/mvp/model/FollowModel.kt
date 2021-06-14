@@ -24,7 +24,7 @@ class FollowModel {
     /**
      * 加载更多
      */
-    fun loadMoreData(url:String):Observable<HomeBean.Issue>{
+    fun loadMoreData(url: String): Observable<HomeBean.Issue> {
         return RetrofitManager.service.getIssueData(url)
                 .compose(SchedulerUtils.ioToMain())
     }

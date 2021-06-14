@@ -3,10 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:orientation="vertical"
     android:paddingTop="@dimen/padding_common_v"
-    android:paddingBottom="@dimen/padding_common_v"
-    android:orientation="vertical">
-
+    android:paddingBottom="@dimen/padding_common_v">
 
     <ImageView
         android:id="@+id/iv_cover_feed"
@@ -14,7 +13,8 @@
         android:layout_height="200dp"
         android:layout_marginEnd="@dimen/padding_common_d"
         android:scaleType="fitXY"
-        android:src="@drawable/placeholder_banner" />
+        android:src="@drawable/placeholder_banner"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/tv_title"

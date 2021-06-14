@@ -11,7 +11,7 @@ import java.lang.reflect.Field
  * Created by xuhao on 2017/12/7.
  * desc:
  */
-object TabLayoutHelper{
+object TabLayoutHelper {
 
     @SuppressLint("ObsoleteSdkInt")
     fun setUpIndicatorWidth(tabLayout: TabLayout) {
